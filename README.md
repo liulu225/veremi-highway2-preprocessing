@@ -59,3 +59,13 @@ python highway2_数据处理脚本.py --input-dir <存放外层ZIP的目录> --o
 ## 单文件示例
 
 `单文件处理练习.py` 演示最小处理流程：读取一个 JSON → 展平全部消息 → 打标签 → 存成 CSV。适合用来理解核心逻辑。
+
+## 攻击分布可视化
+
+`plot_attack_distributions.py` 基于主表生成 15 类攻击的"攻击 vs 同包正常"分布对比图（KDE 密度曲线 / 直方图 / 数量统计），并输出 15 合 1 总览图。
+
+```bash
+python plot_attack_distributions.py --input highway2_机器学习主表.parquet --output-dir 攻击分布对比
+```
+
+结论摘要：11 类攻击在分布图上明显可分；suddenConstantSpeed 部分可见；positionMirroring、timeDelayAttack、dataReplay 在单条消息分布上不可分，需要相邻消息级别的时序特征。
